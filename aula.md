@@ -8,10 +8,10 @@ Sequência de passos lógica e finita para resolução de um problema.
 ## Peças de uma linguagem 
 
 - [x]Comentários
-- Declaração de variável  (const, let)
-- Operadores (atribuição, concatenação, matemáticos, lógicos)
-- Tipos de Dados (atring number boolean)
-- Estrutura de Dados (function, object, array)
+- [x]Declaração de variável  (const, let)
+- [x]Operadores (atribuição, concatenação, matemáticos, lógicos)
+- [x]Tipos de Dados (atring number boolean)
+- [x]Estrutura de Dados (function, object, array)
 - Controle de Fluxo (if/else)
 - Estrutura de Repetição ( for, while)
 
@@ -22,26 +22,31 @@ processar os dados (manipular, alterar ...)
 apresentar os dados
 
 ## Escopo e variáveis:
-Variáveis globais e locais
+- [x]Variáveis globais e locais
 Constantes
 
 ## Tipos de dados
 
-Strings (textos): "" '' ``
-Number: 2, 1.4
-Function
+- [x]Strings (textos): "" '' ``
+- [x]Number: 2, 1.4
+- [x] booleans: true, false
 
 ## Operadores
 
-Operadores de atribuição de valor
-Operador de contatenação
+- [x]Operadores de atribuição de valor
+- [x]Operador de contatenação
 
 ## Estrutura de dados:
 
 ## Array:
-uma lista que contém qualquer tipo de dado
+- [x]uma lista que contém qualquer tipo de dado
 
 ## Objetos
-Atributos e métodos
-Criação e manipulação de objetos
-Acesso a propriedades de objetos
+- [x]Atributos e métodos
+- [x]Criação e manipulação de objetos
+- [x]Acesso a propriedades de objetos
+
+## Function
+- [x] criar, passar argumento
+- [x] executar
+- [x] arrow function / named function
