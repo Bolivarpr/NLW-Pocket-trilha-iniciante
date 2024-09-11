@@ -7,7 +7,7 @@ Sequência de passos lógica e finita para resolução de um problema.
 
 ## Peças de uma linguagem 
 
-- Comentários
+- [x]Comentários
 - Declaração de variável  (const, let)
 - Operadores (atribuição, concatenação, matemáticos, lógicos)
 - Tipos de Dados (atring number boolean)
@@ -20,3 +20,17 @@ Sequência de passos lógica e finita para resolução de um problema.
 coletar os dados
 processar os dados (manipular, alterar ...)
 apresentar os dados
+
+## Escopo e variáveis:
+Variáveis globais e locais
+Constantes
+
+## Tipos de dados
+
+Strings (textos): "" '' ``
+Number: 2, 1.4
+Function
+
+## Operadores
+
+Operadores de atribuição de valor
