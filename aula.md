@@ -54,3 +54,6 @@ Constantes
 ## Estrutura de repetição
 
 - [x] While
+
+# ondicionais 
+- [x]Switch
