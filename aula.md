@@ -57,3 +57,12 @@ Constantes
 
 # ondicionais 
 - [x]Switch
+
+## Módulos em Node.js:
+
+- [x] Importação de módulos (require, commonJS)
+- [x] Biblioteca 'inquirer' para criar prompts interativos
+
+## Programação assímcrona e Prromesas:
+
+-=[x] Uso de funções assíncromas (async/await)
