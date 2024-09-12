@@ -68,3 +68,9 @@ Constantes
 ## Programação assímcrona e Prromesas:
 
 -=[x] Uso de funções assíncromas (async/await)
+
+# usado com prompts
+
+- [x] select - mostra uma lista
+- [x] input - pega informação do usuário
+- [x] checkbox
