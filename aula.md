@@ -33,8 +33,9 @@ Constantes
 
 ## Operadores
 
-- [x]Operadores de atribuição de valor
-- [x]Operador de contatenação
+- [x] Operadores de atribuição de valor =
+- [x] Operador de contatenação +
+- [x] Operadores de comparação: == != <= >= < >
 
 ## Estrutura de dados:
 
@@ -57,6 +58,7 @@ Constantes
 
 # ondicionais 
 - [x]Switch
+- [x] if/else
 
 ## Módulos em Node.js:
 
