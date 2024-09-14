@@ -36,11 +36,14 @@ Constantes
 - [x] Operadores de atribuição de valor =
 - [x] Operador de contatenação +
 - [x] Operadores de comparação: == != <= >= < >
+- [x] Spread Operator: ...
+
 
 ## Estrutura de dados:
 
 ## Array:
 - [x]uma lista que contém qualquer tipo de dado
+- [x] Métodos de Array: push , [find, forEach, filter] : HDF (Higher Order Functions)
 
 ## Objetos
 - [x]Atributos e métodos
@@ -56,7 +59,7 @@ Constantes
 
 - [x] While
 
-# ondicionais 
+# Condicionais 
 - [x]Switch
 - [x] if/else
 
@@ -73,4 +76,4 @@ Constantes
 
 - [x] select - mostra uma lista
 - [x] input - pega informação do usuário
-- [x] checkbox
+- [x] checkbox - marcar e desmarcar ou movimentar 

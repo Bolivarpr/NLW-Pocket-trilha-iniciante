@@ -26,7 +26,7 @@ const listarMetas = async () => {
         choices: [...metas],
         instructions: false,
     })
-
+    // para mostrar que não foi selecionado
     if(respostas.length == 0){
         console.log("Nenhuma meta selecionada!")
         return
@@ -42,14 +42,31 @@ const listarMetas = async () => {
         const meta = metas.find((m) => {
             return m.value == resposta
         })
-
+    
         meta.checked = true
     })
 
     console.log('Meta(s) marcadas como concluída(s)')
 
 }
+        // puxar a opção meta realizadas
+const metasrealizadas = async () => {
+    const realizadas = metas.filter((meta) => {
+        return meta.checked
+    })
 
+    if(realizadas.length ==0){
+        console.log('Não existem metas realizadas! :(')
+            return
+    }
+            await select({
+                message: "Metas Realizadas",
+                choices: [...realizadas]
+            })
+}
+
+
+        //colocar nomes da lista do menu 
 const start = async () => {
    
     while (true){
@@ -66,12 +83,17 @@ const start = async () => {
                     value: "listar"
                 },
                 {
+                    name: "metas realizadas",
+                    value: "realizadas"
+                },
+                {
                     name: "sair",
                     value: "sair"
                 }
             ]
         })
 
+        // puxar as opções do menu
         switch(opcao) {
 
             case "cadastra":
@@ -81,6 +103,9 @@ const start = async () => {
             case "listar":
                 await listarMetas()
                 break
+            case "realizadas":
+                await metasrealizadas()
+                break   
             case "sair":
                 console.log("Até a próxima!")
             return    
