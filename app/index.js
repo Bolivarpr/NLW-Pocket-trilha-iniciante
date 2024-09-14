@@ -19,23 +19,24 @@ const cadastrarMeta = async () => {
     )
 
 }
-
+    // para listar metas
 const listarMetas = async () => {
     const respostas =  await checkbox ({
         message: "Use as setas para mudar de meta, o espaço para marcar ou desmarcar e o Enter para finalizar essa etapa",
         choices: [...metas],
         instructions: false,
     })
-    // para mostrar que não foi selecionado
-    if(respostas.length == 0){
-        console.log("Nenhuma meta selecionada!")
-        return
-    }
 
     //desmarcar as metas
     metas.forEach((m) => {
         m.checked = false
     })
+
+    // para mostrar que não foi selecionado
+    if(respostas.length == 0){
+        console.log("Nenhuma meta selecionada!")
+        return
+    }
 
     //marcar as metas
     respostas.forEach((resposta) => {
@@ -61,8 +62,10 @@ const metasrealizadas = async () => {
     }
             await select({
                 message: "Metas Realizadas",
-                choices: [...realizadas]
+                choices: [...realizadas],
+                
             })
+
 }
 
 
