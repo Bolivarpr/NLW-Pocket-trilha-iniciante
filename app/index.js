@@ -38,7 +38,7 @@ const listarMetas = async () => {
         return
     }
 
-    //marcar as metas
+    // marcar as metas
     respostas.forEach((resposta) => {
         const meta = metas.find((m) => {
             return m.value == resposta
@@ -61,13 +61,13 @@ const metasrealizadas = async () => {
             return
     }
             await select({
-                message: "Metas Realizadas " + realizadas.length,
+                message: "Metas Realizadas: " + realizadas.length,
                 choices: [...realizadas],
                 
             })
 
 }
-    //puxar a opção metasabertas
+    // puxar a opção metas abertas
 const metasabertas = async () => {
     const abertas = metas.filter ((meta) => {
         return meta.checked != true
@@ -79,12 +79,38 @@ const metasabertas = async () => {
     }
 
     await select({
-        message: "Metas Abertas " + abertas.length,
+        message: "Metas Abertas: " + abertas.length,
         choices: [...abertas]
     })
 }
 
-        //colocar nomes da lista do menu 
+    // puxar a opção remover metas
+const removermetas = async () => {
+    const metasRemovidas = metas.map((meta) => {
+        return {value: meta.value, checked: false}
+    })
+
+    const itensremovidos =  await checkbox ({
+        message: "selecione uma meta para remover!",
+        choices: [...metas],
+        instructions: false,
+    })
+
+    if(itensremovidos.length == 0) {
+        console.log("Nenhum item para remover!")
+            return
+    }
+
+    itensremovidos.forEach((item) => {
+        metas = metas.filter((meta) => {
+            return meta.value != item
+        })
+    })
+
+    console.log("Meta(s) removida(s) com sucesso!")
+
+}
+        // colocar nomes da lista do menu 
 const start = async () => {
    
     while (true){
@@ -93,23 +119,27 @@ const start = async () => {
             message: "Menu >",
             choices: [
                 {
-                    name: "cadastrar meta",
+                    name: "Cadastrar meta",
                     value: "cadastra"
                 },
                 {
-                    name: "listar metas",
+                    name: "Listar metas",
                     value: "listar"
                 },
                 {
-                    name: "metas realizadas",
+                    name: "Metas realizadas",
                     value: "realizadas"
                 },
                 {
-                    name: "metas abertas",
+                    name: "Metas abertas",
                     value: "abertas"
                 },
                 {
-                    name: "sair",
+                    name: "Remover metas",
+                    value: "remover"
+                },
+                {
+                    name: "Sair",
                     value: "sair"
                 }
             ]
@@ -131,6 +161,9 @@ const start = async () => {
             case "abertas":
                 await metasabertas()
                 break  
+            case "remover":
+                await removermetas()
+                break 
             case "sair":
                 console.log("Até a próxima!")
             return    
