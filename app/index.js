@@ -1,14 +1,29 @@
 const { select, input, checkbox } = require('@inquirer/prompts')
 
-    // chamar a mensagem de inicio no App
+    //puxando o arquivo json
+const fs = require("fs").promises
 
+    // puxar a mensagem de inicio no App
 let mensagem = "Seja-Bem-Vindo(a) ao App de Metas"
-    // dar meta inicial ao programa 
-let meta = {
-    value: 'Tomar 3L de água por dia',
-    checked: false,
+
+let metas 
+
+    // carregar as metas
+const carregarMetas = async () => {
+    try {
+        const dados = await fs.readFile("metas.json", "utf-8")
+        metas = JSON.parse(dados)
+    }
+
+    catch(erro) {
+        metas = []
+    }
 }
-let metas = [meta]
+    // salvar as metas
+const salvarMetas = async () => {
+    await fs.writeFile("metas.json", JSON.stringify(metas, null, 2))
+}
+
     // puxar a opção cadastrar metas
 const cadastrarMeta = async () => {
     const meta = await input({message: "Digite a meta:"})
@@ -18,6 +33,7 @@ const cadastrarMeta = async () => {
         return
     }
 
+    // colocar em metas
     metas.push(
         {value: meta, checked: false }
     )
@@ -27,6 +43,14 @@ const cadastrarMeta = async () => {
 }
     // puxar a opção listar metas
 const listarMetas = async () => {
+
+    //informar que não existe metas no arquivo JSON
+    if(metas.length == 0) {
+        mensagem = "Não existem metas!"
+        return
+    }
+
+    // puxar a opção listar metas
     const respostas =  await checkbox ({
         message: "Use as setas para mudar de meta, o espaço para marcar ou desmarcar e o Enter para finalizar essa etapa",
         choices: [...metas],
@@ -56,8 +80,16 @@ const listarMetas = async () => {
     mensagem ='Meta(s) marcada(s) como concluída(s)'
 
 }
-        // puxar a opção meta realizadas
+    // puxar a opção meta realizadas
 const metasrealizadas = async () => {
+
+    //informar que não existe metas no arquivo JSON
+    if(metas.length == 0) {
+        mensagem = "Não existem metas!"
+        return
+    }
+
+    // puxar a opção meta realizadas
     const realizadas = metas.filter((meta) => {
         return meta.checked
     })
@@ -78,6 +110,14 @@ const metasrealizadas = async () => {
 }
     // puxar a opção metas abertas
 const metasabertas = async () => {
+
+    //informar que não existe metas no arquivo JSON
+    if(metas.length == 0) {
+        mensagem = "Não existem metas!"
+        return
+    }
+
+    // puxar a opção metas abertas
     const abertas = metas.filter ((meta) => {
         return meta.checked != true
     })
@@ -96,6 +136,14 @@ const metasabertas = async () => {
 
     // puxar a opção remover metas
 const removermetas = async () => {
+
+    //informar que não existe metas no arquivo JSON
+    if(metas.length == 0) {
+        mensagem = "Não existem metas!"
+        return
+    }
+
+    // puxar a opção remover metas
     const metasRemovidas = metas.map((meta) => {
         return {value: meta.value, checked: false}
     })
@@ -132,11 +180,14 @@ const mostrarMensagem = () => {
     }
 }
 
-        // colocar nomes da lista do menu 
+    // começar a aplicação
 const start = async () => {
-   
+    //carregar ou ler as metas
+    await carregarMetas()
+    // colocar nomes na lista do menu
     while (true){
         mostrarMensagem()
+        await salvarMetas()
 
         const opcao = await select({
             message: "Menu >",
@@ -193,4 +244,5 @@ const start = async () => {
     }
 }
 
+    // começar a aplicação
 start()
