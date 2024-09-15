@@ -7,13 +7,13 @@ Sequência de passos lógica e finita para resolução de um problema.
 
 ## Peças de uma linguagem 
 
-- [x]Comentários
-- [x]Declaração de variável  (const, let)
-- [x]Operadores (atribuição, concatenação, matemáticos, lógicos)
-- [x]Tipos de Dados (atring number boolean)
-- [x]Estrutura de Dados (function, object, array)
-- Controle de Fluxo (if/else)
-- Estrutura de Repetição ( for, while)
+- [x] Comentários
+- [x] Declaração de variável  (const, let)
+- [x] Operadores (atribuição, concatenação, matemáticos, lógicos)
+- [x] Tipos de Dados (atring number boolean)
+- [x] Estrutura de Dados (function, object, array)
+- [x] Controle de Fluxo (if/else)
+- [x] Estrutura de Repetição ( for, while)
 
 # Fases de resolução de um problema
 

@@ -27,7 +27,7 @@ const salvarMetas = async () => {
     // puxar a opção cadastrar metas
 const cadastrarMeta = async () => {
     const meta = await input({message: "Digite a meta:"}) 
-    
+
     // mostra a mensagem da ação não realizada
     if(meta.length ==0) {
         mensagem = 'A meta não pode ser vazia.'
@@ -148,6 +148,7 @@ const removermetas = async () => {
     const metasRemovidas = metas.map((meta) => {
         return {value: meta.value, checked: false}
     })
+    
     // mostrar mensagem para realizar uma ação
     const itensremovidos =  await checkbox ({
         message: "selecione uma meta para remover",
