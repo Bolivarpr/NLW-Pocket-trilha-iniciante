@@ -4,4 +4,4 @@
     - [x] metas abertas
 - [x] marcar/desmarcar metas realizadas
 - [x] remover metas
-- sistemas de mensagens
+- [x] sistemas de mensagens

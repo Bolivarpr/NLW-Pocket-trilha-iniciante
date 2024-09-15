@@ -1,25 +1,31 @@
 const { select, input, checkbox } = require('@inquirer/prompts')
 
+    // chamar a mensagem de inicio no App
+
+let mensagem = "Seja-Bem-Vindo(a) ao App de Metas"
+    // dar meta inicial ao programa 
 let meta = {
     value: 'Tomar 3L de água por dia',
     checked: false,
 }
 let metas = [meta]
-
+    // puxar a opção cadastrar metas
 const cadastrarMeta = async () => {
     const meta = await input({message: "Digite a meta:"})
-
+    // mostra a mensagem da ação não realizada
     if(meta.length ==0) {
-        console.log('A meta não pode ser vazia.')
+        mensagem = 'A meta não pode ser vazia.'
         return
     }
 
     metas.push(
         {value: meta, checked: false }
     )
+    
 
+    mensagem = "Meta cadastrada com sucesso!"
 }
-    // para listar metas
+    // puxar a opção listar metas
 const listarMetas = async () => {
     const respostas =  await checkbox ({
         message: "Use as setas para mudar de meta, o espaço para marcar ou desmarcar e o Enter para finalizar essa etapa",
@@ -32,9 +38,9 @@ const listarMetas = async () => {
         m.checked = false
     })
 
-    // para mostrar que não foi selecionado
+    // mostra a mensagem da ação não realizada
     if(respostas.length == 0){
-        console.log("Nenhuma meta selecionada!")
+        mensagem = "Nenhuma meta selecionada!"
         return
     }
 
@@ -47,7 +53,7 @@ const listarMetas = async () => {
         meta.checked = true
     })
 
-    console.log('Meta(s) marcadas como concluída(s)')
+    mensagem ='Meta(s) marcada(s) como concluída(s)'
 
 }
         // puxar a opção meta realizadas
@@ -56,10 +62,13 @@ const metasrealizadas = async () => {
         return meta.checked
     })
 
+    // mostra a mensagem da ação não realizada
     if(realizadas.length ==0){
-        console.log('Não existem metas realizadas! :(')
+        mensagem = 'Não existem metas realizadas! :('
             return
     }
+
+    // mostra quantas metas realizadas
             await select({
                 message: "Metas Realizadas: " + realizadas.length,
                 choices: [...realizadas],
@@ -73,11 +82,12 @@ const metasabertas = async () => {
         return meta.checked != true
     })
 
+    // mostra a mensagem da ação não realizada
     if(abertas.length ==0) {
-        console.log("Não existem metas abertas! :)")
+        mensagem = "Não existem metas abertas! :)"
         return
     }
-
+    // mostra quantas metas abertas
     await select({
         message: "Metas Abertas: " + abertas.length,
         choices: [...abertas]
@@ -89,31 +99,44 @@ const removermetas = async () => {
     const metasRemovidas = metas.map((meta) => {
         return {value: meta.value, checked: false}
     })
-
+    // mostrar mensagem para realizar uma ação
     const itensremovidos =  await checkbox ({
-        message: "selecione uma meta para remover!",
+        message: "selecione uma meta para remover",
         choices: [...metas],
         instructions: false,
     })
-
+    // mostra a mensagem da ação realizada
     if(itensremovidos.length == 0) {
-        console.log("Nenhum item para remover!")
+        mensagem = "Nenhum item para remover!"
             return
     }
-
+        // remover as meta(s)
     itensremovidos.forEach((item) => {
         metas = metas.filter((meta) => {
             return meta.value != item
         })
     })
 
-    console.log("Meta(s) removida(s) com sucesso!")
+    mensagem = "Meta(s) removida(s) com sucesso!"
 
 }
+    // coletou  processou e apresentou  dados,Fazer com que apareceça as mensagens dos itens do menu
+
+const mostrarMensagem = () => {
+    console.clear();
+
+    if(mensagem != "") {
+        console.log(mensagem)
+        console.log("")
+        mensagem = ""
+    }
+}
+
         // colocar nomes da lista do menu 
 const start = async () => {
    
     while (true){
+        mostrarMensagem()
 
         const opcao = await select({
             message: "Menu >",
@@ -150,7 +173,6 @@ const start = async () => {
 
             case "cadastra":
                 await cadastrarMeta()
-                console.log(metas)
                 break
             case "listar":
                 await listarMetas()

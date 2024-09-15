@@ -43,7 +43,7 @@ Constantes
 
 ## Array:
 - [x]uma lista que contém qualquer tipo de dado
-- [x] Métodos de Array: push , [find, forEach, filter] : HDF (Higher Order Functions)
+- [x] Métodos de Array: push , [find, forEach, filter, map] : HDF (Higher Order Functions)
 
 ## Objetos
 - [x]Atributos e métodos
